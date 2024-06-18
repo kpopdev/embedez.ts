@@ -52,3 +52,4 @@ const getPreview = (search_key) => __awaiter(void 0, void 0, void 0, function* (
     return (0, responces_1.sendJsonAction)(request.data.data);
 });
 exports.getPreview = getPreview;
+//# sourceMappingURL=index.js.map

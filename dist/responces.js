@@ -50,3 +50,4 @@ const sendJsonAction = (data, code) => {
     };
 };
 exports.sendJsonAction = sendJsonAction;
+//# sourceMappingURL=responces.js.map
