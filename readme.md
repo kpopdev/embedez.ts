@@ -1,7 +1,3 @@
-Sure, here's a revised version of your `README.md` for the EmbedEZ.ts package:
-
----
-
 # EmbedEZ.ts
 
 EmbedEZ.ts is a TypeScript wrapper for the EmbedEZ API, designed to simplify the integration of rich media previews into your applications. The EmbedEZ API documentation can be found [here](https://embedez.com/docs).
