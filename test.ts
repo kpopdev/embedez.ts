@@ -7,19 +7,22 @@ EmbedEZ.setConfig({
   url: "https://embedez.com"
 })
 
-const message = "hello yall look at this tiktok video https://www.tiktok.com/@truth.filmz/video/7355123993017421089"
+async function test(message: string) {
+  // Check if the message contains social media content
+  const isValid = EmbedEZ.utils.checkForSocialMediaContent(message);
+  console.log("isValid:", isValid);
 
-async function Test(input: string) {
-  const isValid = EmbedEZ.utils.checkForSocialMediaContent(message)
-  console.log("TEST: isValid", isValid)  
-  
-  const searchKey = await EmbedEZ.getSearchKey(message)
-  console.log("TEST: searchKey", searchKey)
+  // Get the search key from the message
+  const searchKeyResponse = await EmbedEZ.getSearchKey(message);
+  console.log("searchKey:", searchKeyResponse);
 
-  if (searchKey.success) {
-    const preview = await EmbedEZ.getPreview(searchKey.data.key)
-    console.log("TEST: preview", preview)
+  if (searchKeyResponse.success) {
+    // Get the media preview using the retrieved search key
+    const preview = await EmbedEZ.getPreview(searchKeyResponse.data.key);
+    console.log("preview:", preview);
   }
 }
 
-Test("https://www.tiktok.com/@truth.filmz/video/7355123993017421089")
+// Example usage
+const message = "hello yall look at this tiktok video https://www.tiktok.com/@truth.filmz/video/7355123993017421089";
+test(message);
