@@ -1,0 +1,39 @@
+{
+  "name": "embedez.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "ts-node test.ts",
+    "build": "rimraf dist && tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/embedez/embedez.ts.git"
+  },
+  "keywords": [
+    "embedez"
+  ],
+  "author": "Chance",
+  "authors": [
+    "https://github.com/Gratenes"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/embedez/embedez.ts/issues"
+  },
+  "homepage": "https://github.com/embedez/embedez.ts#readme",
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
