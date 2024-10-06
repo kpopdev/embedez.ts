@@ -1,6 +1,6 @@
 {
   "name": "embedez.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "start": "ts-node src/index.ts",
     "test": "ts-node test.ts",
     "build": "rimraf dist && tsc -p tsconfig.json",
-    "publish": "npm run build && npm publish"
+    "build:publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",

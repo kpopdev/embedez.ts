@@ -12,7 +12,10 @@ export class Utils {
     return check !== null;
   }
 
-  extractIdFromUrl<Pattern extends string>(pattern: Pattern, url: string): ExtractParams<Pattern> | {} {
+  extractIdFromUrl<Pattern extends string>(
+    pattern: Pattern,
+    url: string
+  ): ExtractParams<Pattern> | {} {
     const paramNames = pattern.match(/:[a-zA-Z0-9_]+/g) || [];
     const regexPattern = pattern.replace(
       /:[a-zA-Z0-9_]+/g,
@@ -42,5 +45,22 @@ export class Utils {
     }
 
     return {};
+  }
+
+  extractKeysFromUrlTemplate(urlTemplate: string): string[] {
+    const keyRegex = /{([^{}]+)}/g;
+    const matches = urlTemplate.match(keyRegex);
+    const result = matches ? matches.map((match) => match.slice(1, -1)) : [];
+    return result;
+  }
+
+  replaceKeysWithValues(
+    urlTemplate: string,
+    extractedIds: Record<string, string>
+  ): string {
+    return urlTemplate.replace(
+      /\{([^{}]+)\}/g,
+      (match, key) => extractedIds[key] || match
+    );
   }
 }

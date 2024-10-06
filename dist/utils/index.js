@@ -27,6 +27,15 @@ class Utils {
         }
         return {};
     }
+    extractKeysFromUrlTemplate(urlTemplate) {
+        const keyRegex = /{([^{}]+)}/g;
+        const matches = urlTemplate.match(keyRegex);
+        const result = matches ? matches.map((match) => match.slice(1, -1)) : [];
+        return result;
+    }
+    replaceKeysWithValues(urlTemplate, extractedIds) {
+        return urlTemplate.replace(/\{([^{}]+)\}/g, (match, key) => extractedIds[key] || match);
+    }
 }
 exports.Utils = Utils;
 //# sourceMappingURL=index.js.map
