@@ -52,7 +52,6 @@ export interface embedFetch {
     title: string | null;
     description: string | null;
     media: embedMedia[];
-    embedUrl: string;
     generatedMedia?: embedMedia[] | null;
     statistics: {
       shares: number;
