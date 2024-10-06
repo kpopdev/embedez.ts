@@ -1,6 +1,11 @@
 
 export type SearchResult = {
   key: string;
+  site: sites;
+  views?: number;
+  timestamp?: Date;
+  detected: Record<string, string | undefined>;
+  originalUrl: string;
 }
 
 
