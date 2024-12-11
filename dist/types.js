@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmbedContent = exports.EmbedUser = exports.EmbedStatistics = exports.MediaObject = exports.EmbedMediaObject = exports.EmbedFetchObject = exports.shouldCors = void 0;
-exports.shouldCors = ["instagram", "twitter", "ifunny"];
+exports.shouldCors = ["instagram", "twitter", "ifunny", "imgur"];
 class EmbedFetchObject {
     constructor({ type, key, user, content, }) {
         this.type = type;

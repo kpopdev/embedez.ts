@@ -9,7 +9,7 @@ export type SearchResult = {
 export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube";
 export type IMedias = "video" | "photo" | "audio" | "gif" | "cdn";
 
-export let shouldCors = ["instagram", "twitter", "ifunny"];
+export let shouldCors = ["instagram", "twitter", "ifunny", "imgur"];
 
 export interface EmbedFetchLimited {
   type: ISites;
