@@ -93,6 +93,7 @@ export interface EmbedFetchContent {
   text: string | null;
   title: string | null;
   description: string | null;
+  postedDate: number | null;
   media: EmbedMedia[];
   generatedMedia?: EmbedMedia[] | null;
   statistics: {
@@ -464,6 +465,7 @@ export class EmbedContent {
   description: string | null;
   media: EmbedMedia[];
   statistics: EmbedStatistics;
+  postedDate: number | null;
 
   constructor({
     key,
@@ -473,6 +475,7 @@ export class EmbedContent {
     description,
     media,
     statistics,
+    postedDate,
   }: Partial<EmbedFetchContent> = {}) {
     this.key = key ?? null;
     this.link = link ?? "";
@@ -481,6 +484,7 @@ export class EmbedContent {
     this.description = description ?? null;
     this.media = media ?? [];
     this.statistics = new EmbedStatistics(statistics);
+    this.postedDate = postedDate ?? null;
   }
 
   setKey(key: string): this {
@@ -516,9 +520,26 @@ export class EmbedContent {
   }
 
   setMedia(media: (EmbedMedia | EmbedMediaObject)[]): this {
-    this.media = media.map((m) =>
-      m instanceof EmbedMediaObject ? m.toJSON() : m,
-    );
+    this.media = media
+      .map((m) => (m instanceof EmbedMediaObject ? m.toJSON() : m))
+      .filter((m): m is EmbedMedia => m !== undefined);
+    return this;
+  }
+
+  setPostedDate(postedDate: number | Date | string | null): this {
+    if (typeof postedDate === "string") {
+      this.postedDate = new Date(postedDate).getTime();
+      return this;
+    } else if (typeof postedDate === "number") {
+      this.postedDate = postedDate;
+      return this;
+    } else if (postedDate instanceof Date) {
+      this.postedDate = postedDate.getTime();
+      return this;
+    }
+
+    this.postedDate = null;
+
     return this;
   }
 
@@ -534,7 +555,10 @@ export class EmbedContent {
       text: this.text,
       title: this.title,
       description: this.description,
-      media: this.media.map((m) => new EmbedMediaObject(m).toJSON()),
+      postedDate: this.postedDate,
+      media: this.media
+        .map((m) => new EmbedMediaObject(m).toJSON())
+        .filter((m): m is EmbedMedia => m !== undefined),
       statistics: this.statistics.toJSON(),
     });
   }

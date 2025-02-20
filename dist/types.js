@@ -247,7 +247,7 @@ class EmbedUser {
 }
 exports.EmbedUser = EmbedUser;
 class EmbedContent {
-    constructor({ key, link, text, title, description, media, statistics, } = {}) {
+    constructor({ key, link, text, title, description, media, statistics, postedDate, } = {}) {
         this.key = key !== null && key !== void 0 ? key : null;
         this.link = link !== null && link !== void 0 ? link : "";
         this.text = text !== null && text !== void 0 ? text : null;
@@ -255,6 +255,7 @@ class EmbedContent {
         this.description = description !== null && description !== void 0 ? description : null;
         this.media = media !== null && media !== void 0 ? media : [];
         this.statistics = new EmbedStatistics(statistics);
+        this.postedDate = postedDate !== null && postedDate !== void 0 ? postedDate : null;
     }
     setKey(key) {
         this.key = key;
@@ -281,7 +282,25 @@ class EmbedContent {
         return this;
     }
     setMedia(media) {
-        this.media = media.map((m) => m instanceof EmbedMediaObject ? m.toJSON() : m);
+        this.media = media
+            .map((m) => (m instanceof EmbedMediaObject ? m.toJSON() : m))
+            .filter((m) => m !== undefined);
+        return this;
+    }
+    setPostedDate(postedDate) {
+        if (typeof postedDate === "string") {
+            this.postedDate = new Date(postedDate).getTime();
+            return this;
+        }
+        else if (typeof postedDate === "number") {
+            this.postedDate = postedDate;
+            return this;
+        }
+        else if (postedDate instanceof Date) {
+            this.postedDate = postedDate.getTime();
+            return this;
+        }
+        this.postedDate = null;
         return this;
     }
     setStatistics(statistics) {
@@ -295,7 +314,10 @@ class EmbedContent {
             text: this.text,
             title: this.title,
             description: this.description,
-            media: this.media.map((m) => new EmbedMediaObject(m).toJSON()),
+            postedDate: this.postedDate,
+            media: this.media
+                .map((m) => new EmbedMediaObject(m).toJSON())
+                .filter((m) => m !== undefined),
             statistics: this.statistics.toJSON(),
         });
     }
