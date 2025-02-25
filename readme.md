@@ -2,6 +2,19 @@
 
 EmbedEZ.ts is a TypeScript wrapper for the EmbedEZ API, designed to simplify the integration of rich media previews into your applications. The EmbedEZ API documentation can be found [here](https://embedez.com/docs).
 
+## Supported Platforms
+
+EmbedEZ.ts supports retrieving posts and media from the following platforms:
+- TikTok
+- Instagram
+- Twitter
+- Reddit
+- YouTube
+- Facebook
+- Bilibili
+- iFunny
+- Saved posts
+
 ## Installation
 
 To install EmbedEZ.ts, you can use npm:

@@ -45,7 +45,7 @@ export const getPreview = async (search_key: string): Promise<ErrorResult | Json
 
 export const getCombined = async (input: string): Promise<ErrorResult | JsonResult<EmbedFetch>> => {
   const request = await axios<ErrorResult | JsonResult<EmbedFetch>>({
-    url: `${EmbedEZ.config.url}/api/v1/providers/preview`,
+    url: `${EmbedEZ.config.url}/api/v1/providers/combined`,
     method: 'get',
     headers: {
       Authorization: `Bearer ${EmbedEZ.config.apiKey}`,

@@ -6,10 +6,10 @@ export type SearchResult = {
   detected: Record<string, string | undefined>;
   originalUrl: string;
 };
-export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube";
+export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube" | "facebook" | "bilibili";
 export type IMedias = "video" | "photo" | "audio" | "gif" | "cdn";
 
-export let shouldCors = ["instagram", "twitter", "ifunny", "imgur"];
+export let shouldCors = ["instagram", "twitter", "ifunny", "imgur", "bilibili"];
 
 export interface EmbedFetchLimited {
   type: ISites;

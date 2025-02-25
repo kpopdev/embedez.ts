@@ -54,7 +54,7 @@ const getPreview = (search_key) => __awaiter(void 0, void 0, void 0, function* (
 exports.getPreview = getPreview;
 const getCombined = (input) => __awaiter(void 0, void 0, void 0, function* () {
     const request = yield (0, axios_1.default)({
-        url: `${__1.EmbedEZ.config.url}/api/v1/providers/preview`,
+        url: `${__1.EmbedEZ.config.url}/api/v1/providers/combined`,
         method: 'get',
         headers: {
             Authorization: `Bearer ${__1.EmbedEZ.config.apiKey}`,
