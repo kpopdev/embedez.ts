@@ -6,7 +6,7 @@ export type SearchResult = {
   detected: Record<string, string | undefined>;
   originalUrl: string;
 };
-export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube" | "facebook" | "bilibili";
+export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube" | "facebook" | "bilibili" | "rule34xxx";
 export type IMedias = "video" | "photo" | "audio" | "gif" | "cdn";
 
 export let shouldCors = ["instagram", "twitter", "ifunny", "imgur", "bilibili"];
