@@ -16,4 +16,5 @@ EmbedEZ.config = {
 };
 EmbedEZ.getSearchKey = requests_1.getSearchKey;
 EmbedEZ.getPreview = requests_1.getPreview;
+EmbedEZ.getCombined = requests_1.getCombined;
 //# sourceMappingURL=index.js.map

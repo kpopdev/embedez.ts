@@ -1,4 +1,4 @@
-import { getPreview, getSearchKey } from "./requests";
+import { getCombined, getPreview, getSearchKey } from "./requests";
 import { Utils } from "./utils";
 
 
@@ -16,4 +16,6 @@ export class EmbedEZ {
 
   static getSearchKey = getSearchKey
   static getPreview = getPreview
+  
+  static getCombined = getCombined
 }
