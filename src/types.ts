@@ -63,6 +63,7 @@ export interface EmbedMedia {
 export type EmbedFetch = {
   type: ISites;
   key: string;
+  shareUrl?: string;
   incorrectId?: boolean;
   user: EmbedFetchUser;
   content: EmbedFetchContent;
