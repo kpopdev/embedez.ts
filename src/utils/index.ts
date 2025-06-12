@@ -7,7 +7,7 @@ export type ExtractParams<T extends string> =
 
 export class Utils {
   checkForSocialMediaContent(input: string): boolean {
-    const regex = /(tiktok|instagram|twitter|x\.com|snapchat|reddit|ifunny|youtu\w*|imgur|bsky|facebook|threads|bilibili|rule34)/gi;
+    const regex = /(tiktok|instagram|twitter|x\.com|snapchat|reddit|ifunny|youtu\w*|imgur|bsky|facebook|threads|bilibili|rule34|weibo|bluesky)/gi;
     const check = input.match(regex);
     return check !== null;
   }

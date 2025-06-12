@@ -1,7 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmbedContent = exports.EmbedUser = exports.EmbedStatistics = exports.MediaObject = exports.EmbedMediaObject = exports.EmbedFetchObject = exports.shouldCors = void 0;
-exports.shouldCors = ["instagram", "twitter", "ifunny", "imgur", "bilibili"];
+exports.shouldCors = [
+    "instagram",
+    "twitter",
+    "ifunny",
+    "imgur",
+    "bilibili",
+    "threads",
+    "weibo",
+];
 class EmbedFetchObject {
     constructor({ type, key, user, content, }) {
         this.type = type;
@@ -98,7 +106,7 @@ class MediaObject {
         this.headers = "headers" in media ? media.headers : undefined;
     }
     getUrl(props) {
-        const { ignoreTemp, EZ_CDN_URL = process.env.EZ_CDN_URL, EZ_PROXY_URI = process.env.EZ_PROXY_URI } = props !== null && props !== void 0 ? props : {};
+        const { ignoreTemp, EZ_CDN_URL = process.env.EZ_CDN_URL, EZ_PROXY_URI = process.env.EZ_PROXY_URI, } = props !== null && props !== void 0 ? props : {};
         if (this.id) {
             return `${EZ_CDN_URL}/view?id=${this.id}&ignoreTemp=${ignoreTemp}&type=${this.type}`;
         }

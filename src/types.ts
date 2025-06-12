@@ -6,10 +6,33 @@ export type SearchResult = {
   detected: Record<string, string | undefined>;
   originalUrl: string;
 };
-export type ISites = "tiktok" | "instagram" | "twitter" | "reddit" | "saved" | "ifunny" | "youtube" | "facebook" | "bilibili" | "rule34xxx";
+export type ISites =
+| "tiktok"
+| "instagram"
+| "twitter"
+| "reddit"
+| "saved"
+| "ifunny"
+| "youtube"
+| "snapchat"
+| "imgur"
+| "facebook"
+| "bilibili"
+| "rule34xxx"
+| "threads"
+| "weibo";
+
 export type IMedias = "video" | "photo" | "audio" | "gif" | "cdn";
 
-export let shouldCors = ["instagram", "twitter", "ifunny", "imgur", "bilibili"];
+export let shouldCors = [
+  "instagram",
+  "twitter",
+  "ifunny",
+  "imgur",
+  "bilibili",
+  "threads",
+  "weibo",
+];
 
 export interface EmbedFetchLimited {
   type: ISites;
@@ -37,18 +60,18 @@ export type Medias = "video" | "photo" | "audio" | "gif" | "cdn";
 
 export type MediaUrl =
   | {
-    site: ISites;
-    type: Medias;
-    id: string;
-  }
+      site: ISites;
+      type: Medias;
+      id: string;
+    }
   | {
-    site: ISites;
-    type: Medias;
-    url: string;
-    headers?: {
-      [key: string]: string;
+      site: ISites;
+      type: Medias;
+      url: string;
+      headers?: {
+        [key: string]: string;
+      };
     };
-  };
 
 export interface EmbedMedia {
   type: Medias;
@@ -261,7 +284,11 @@ export class MediaObject {
     EZ_CDN_URL?: string;
     EZ_PROXY_URI?: string;
   }): string {
-    const { ignoreTemp, EZ_CDN_URL = process.env.EZ_CDN_URL, EZ_PROXY_URI = process.env.EZ_PROXY_URI } = props ?? {};
+    const {
+      ignoreTemp,
+      EZ_CDN_URL = process.env.EZ_CDN_URL,
+      EZ_PROXY_URI = process.env.EZ_PROXY_URI,
+    } = props ?? {};
     if (this.id) {
       return `${EZ_CDN_URL}/view?id=${this.id}&ignoreTemp=${ignoreTemp}&type=${this.type}`;
     }
@@ -515,7 +542,7 @@ export class EmbedContent {
 
   addMedia(media: EmbedMedia | EmbedMediaObject): this {
     this.media.push(
-      media instanceof EmbedMediaObject ? media.getMedia() : media,
+      media instanceof EmbedMediaObject ? media.getMedia() : media
     );
     return this;
   }
