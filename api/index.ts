@@ -1,7 +1,9 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { EmbedEZ } from '../src/index';
 
-// No API key is needed for limited functionality.
+// IMPORTANT: This line sets the API key from your Vercel environment variable.
+// The embedez.ts library will not work without a valid key.
+EmbedEZ.setConfig({ apiKey: process.env.SEARCH_KEY });
 
 export default async (request: VercelRequest, response: VercelResponse) => {
   try {
